@@ -2,7 +2,12 @@ var myExpress = require("./lib/myexpress.js");
 
 var app = myExpress();
 
+app.get("/", function (req,res) {
+    res.send("Good morning");
+});
+
 app.get("/greeting", function (req, res) {
+    console.log(req.params);
     res.send("Hello how are you?");
 });
 
