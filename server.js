@@ -6,9 +6,9 @@ app.get("/", function (req,res) {
     res.send("Good morning");
 });
 
-app.get("/greeting", function (req, res) {
-    console.log(req.params);
-    res.send("Hello how are you?");
+app.get("/greeting/:name", function (req, res) {
+    console.log(req.params["name"]);
+    res.send(`Hello how are you ${req.params["name"]}?`);
 });
 
 app.get("/logoff", function (req, res) {
