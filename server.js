@@ -3,20 +3,22 @@ var myExpress = require("./lib/myexpress.js");
 var app = myExpress();
 
 app.get("/greeting", function (req, res) {
-    var message = "Good morning";
-    res.setHeader("Content-Type", "text/plain");
-    res.setHeader("Content-Length", message.length);
-    res.writeHead(200);
-    res.end(message);
+    res.send("Hello how are you?");
 });
 
 app.get("/logoff", function (req, res) {
-    var message = "Signing off.  Good night.";
-    res.setHeader("Content-Type", "text/plain");
-    res.setHeader("Content-Length", message.length);
-    res.writeHead(200);
-    res.end(message);
+    res.send("Signing off. Good night:)");
 });
+
+app.get("/dashboard", function (req,res) {
+    res.redirect("/greeting");
+});
+
+app.get("/users_json", function (req,res) {
+    res.json({
+        message: "Rajesh Pillai"
+    });
+})
 
 
 app.listen(3000);
