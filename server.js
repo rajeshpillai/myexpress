@@ -2,6 +2,22 @@ var myExpress = require("./lib/myexpress.js");
 
 var app = myExpress();
 
+app.use (function (req, res, next) {
+    console.log ("in middleware 1...");
+    next();
+});
+
+app.use (function (req, res, next) {
+    console.log ("in middleware 2...");
+    next();
+});
+
+// simple logger
+app.use(function(req, res, next){
+    console.log('%s %s', req.method, req.url);
+    next();
+});
+
 app.get("/", function (req,res) {
     res.send("Good morning");
 });
